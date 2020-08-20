@@ -1,0 +1,8 @@
+C:\Users\Daniel\source\repos\Logstore_BackEnd\bin\Debug\netcoreapp2.2\Logstore_BackEnd.deps.json
+C:\Users\Daniel\source\repos\Logstore_BackEnd\bin\Debug\netcoreapp2.2\Logstore_BackEnd.dll
+C:\Users\Daniel\source\repos\Logstore_BackEnd\bin\Debug\netcoreapp2.2\Logstore_BackEnd.pdb
+C:\Users\Daniel\source\repos\Logstore_BackEnd\obj\Debug\netcoreapp2.2\Logstore_BackEnd.AssemblyInfoInputs.cache
+C:\Users\Daniel\source\repos\Logstore_BackEnd\obj\Debug\netcoreapp2.2\Logstore_BackEnd.AssemblyInfo.cs
+C:\Users\Daniel\source\repos\Logstore_BackEnd\obj\Debug\netcoreapp2.2\Logstore_BackEnd.csproj.CoreCompileInputs.cache
+C:\Users\Daniel\source\repos\Logstore_BackEnd\obj\Debug\netcoreapp2.2\Logstore_BackEnd.dll
+C:\Users\Daniel\source\repos\Logstore_BackEnd\obj\Debug\netcoreapp2.2\Logstore_BackEnd.pdb

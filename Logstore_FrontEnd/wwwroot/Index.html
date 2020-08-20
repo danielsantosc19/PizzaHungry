@@ -1,0 +1,100 @@
+﻿<!doctype html>
+<html ng-app="app">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+
+    <link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/angular_material/1.1.24/angular-material.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.0/angular.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.0/angular-animate.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.0/angular-aria.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.0/angular-messages.min.js"></script>
+    <script src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/t-114/svg-assets-cache.js"></script>
+
+    <!-- Angular Material Javascript now available via Google CDN; version 1.1.24 used here -->
+    <script src="https://ajax.googleapis.com/ajax/libs/angular_material/1.1.24/angular-material.min.js"></script>
+
+    <script src="js/app.js"></script>
+</head>
+<body ng-controller="HungryPizzaController as ctrl">
+    <div class="container-fluid autocompletedemoFloatingLabel" ng-cloak="">
+        <div class="row">
+            <div class="col-sm-12">
+                <h2>Hungry Pizza by Daniel Castro</h2>
+            </div>
+        </div>
+
+        <br />
+        <div class="row">
+            <div class="col-sm-12">
+                Nome
+                <md-autocomplete md-item-text="item.name" md-no-cache="false" md-selected-item="selectedClient" md-search-text="searchText" md-items="item in searchClient(searchText)">
+                    <md-item-template>
+                        <span md-highlight-text="searchText">{{item.name}}</span>
+                    </md-item-template>
+                </md-autocomplete>
+
+                Endereço
+                <br />
+                <input type="text" class="form-control" ng-model="selectedClient.address" />
+            </div>
+        </div>
+
+        <br />
+
+        <button class="btn btn-primary" ng-click="addOrder()" ng-disabled="newOrder">Novo pedido</button>
+        <button class="btn btn-primary" ng-click="addItem()" ng-disabled="!newOrder || showFlavor">Adicionar Pizza</button>
+        <button class="btn btn-primary" ng-click="cancelOrder()" ng-disabled="!newOrder">Cancelar pedido</button>
+        <button class="btn btn-success" ng-click="checkout()" ng-disabled="!currentOrder || currentOrder.Items.length == 0 || searchText == '' || !selectedClient">Finalizar pedido</button>
+        <button class="btn btn-success" ng-click="getOrderHistory()" ng-disabled="!selectedClient">Ver histórico de pedidos</button>
+
+    </div>
+
+    <div ng-show="showFlavor">
+        <div class="row">
+            <div class="col-sm-3 card" style="width: 18rem;" ng-repeat="flavor in flavors">
+                <div class="card-body">
+                    <h5 class="card-title">Sabor: {{flavor.name}}</h5>
+                    <p class="card-text">Preço: {{flavor.price}}</p>
+                    <button class="btn btn-primary" ng-click="addFlavor(flavor)" ng-disabled="flavor.id == flavorHide.id">Adicionar</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <br />
+
+    <div ng-show="currentOrder">
+        <h2>Pedido atual</h2>
+        <div ng-repeat="item in currentOrder.Items">
+            <span ng-show="item.Flavor">{{item.Flavor.name}} {{item.Flavor.price}} </span>
+            <span ng-show="item.Flavor2">{{item.Flavor2.name}} {{item.Flavor.price}} </span>
+        </div>
+    </div>
+
+    
+
+    <div ng-show="orderHistory">
+
+        <div class="card border-secondary mb-3" style="max-width: 18rem;" ng-repeat="order in orderHistory">
+            <div class="card-header">Pedido: {{order.id}}</div>
+            <div class="card-body text-secondary" ng-repeat="item in order.items">
+                <p class="card-text">Sabor: {{item.flavor1.name}}({{item.flavor1.price}})<span ng-show="item.flavor2"> , {{item.flavor2.name}}({{item.flavor2.price}} </span>  </p>                
+            </div>
+            <hr />
+            <p class="card-text">Preço do pedido:{{order.finalPrice}}</p>
+        </div>
+
+
+    </div>
+
+
+        <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+
+
+</body>
+</html>

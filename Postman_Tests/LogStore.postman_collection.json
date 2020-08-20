@@ -1,0 +1,407 @@
+{
+	"info": {
+		"_postman_id": "8ca678fc-21e7-4c9b-a681-6ddac4068629",
+		"name": "LogStore",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Erro, Criando um pedido vazio (sem pizza)",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "ff26a17c-5fdd-48e4-aaa9-636b24ac4bb0",
+						"exec": [
+							"pm.test(\"Status is 400\", function () {\r",
+							"    pm.response.to.have.status(400);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Body com regra violada\",() => {\r",
+							"  pm.expect(pm.response.text()).to.include(\"O pedido deve ter no mínimo uma pizza e no máximo 10.\");\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"protocolProfileBehavior": {
+				"disabledSystemHeaders": {
+					"accept": true
+				}
+			},
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Accept",
+						"type": "text",
+						"value": "application/json"
+					},
+					{
+						"key": "Content-Type",
+						"type": "text",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{  \r\n    \"clientId\": 1\r\n}"
+				},
+				"url": {
+					"raw": "http://localhost:61929/api/orders",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "61929",
+					"path": [
+						"api",
+						"orders"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "OK, Criando cliente",
+			"protocolProfileBehavior": {
+				"disabledSystemHeaders": {
+					"accept": true
+				}
+			},
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{ \"name\":\"Daniel Castro\" , \"address\":\"estrada do pontal 3820 casa 26\"}"
+				},
+				"url": {
+					"raw": "http://localhost:61929/api/client",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "61929",
+					"path": [
+						"api",
+						"client"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "OK, obtendo todas os pedidos de um cliente",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:61929/api/orders",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "61929",
+					"path": [
+						"api",
+						"orders"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Ok, listando todos os clientes",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "5460d26a-4a84-4290-9817-f74c0e2daac7",
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:61929/api/clients/",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "61929",
+					"path": [
+						"api",
+						"clients",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Ok, criando um novo sabor de pizza",
+			"protocolProfileBehavior": {
+				"disabledSystemHeaders": {
+					"accept": true
+				}
+			},
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{ \"name\":\"teste novo sabor\" , \"price\":19}"
+				},
+				"url": {
+					"raw": "http://localhost:61929/api/flavors",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "61929",
+					"path": [
+						"api",
+						"flavors"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Ok, listando os sabores das pizzas",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "6c8a0aac-72f6-4bc9-ac31-dc481cb5aa43",
+						"exec": [
+							"pm.test(\"Status é 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:61929/api/flavors",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "61929",
+					"path": [
+						"api",
+						"flavors"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "OK, Criando um pedido",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "8a4c0cff-c0c6-4f8d-a300-344780c84cab",
+						"exec": [
+							"pm.test(\"Status é 201\", function () {\r",
+							"    pm.response.to.have.status(201);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"protocolProfileBehavior": {
+				"disabledSystemHeaders": {
+					"accept": true
+				}
+			},
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Accept",
+						"type": "text",
+						"value": "application/json"
+					},
+					{
+						"key": "Content-Type",
+						"type": "text",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"items\": [\r\n        {\r\n            \"flavor\": 4,\r\n            \"flavor2\": 7\r\n        }\r\n    ],    \r\n    \"clientId\": 1\r\n}"
+				},
+				"url": {
+					"raw": "http://localhost:61929/api/orders",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "61929",
+					"path": [
+						"api",
+						"orders"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Erro, pedido sem cliente e sem endereço",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "79002498-b5bc-47f7-90b8-0f8d4d7e94a3",
+						"exec": [
+							"pm.test(\"Status is 400\", function () {\r",
+							"    pm.response.to.have.status(400);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Body com regra violada\",() => {\r",
+							"  pm.expect(pm.response.text()).to.include(\"O pedido precisa da identificação do cliente cadastrado ou um endereço para entrega\");\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"protocolProfileBehavior": {
+				"disabledSystemHeaders": {
+					"accept": true
+				}
+			},
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Accept",
+						"type": "text",
+						"value": "application/json"
+					},
+					{
+						"key": "Content-Type",
+						"type": "text",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"items\": [\r\n        {\r\n            \"flavor\": 4,\r\n            \"flavor2\": 7\r\n        }\r\n    ]        \r\n}"
+				},
+				"url": {
+					"raw": "http://localhost:61929/api/orders",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "61929",
+					"path": [
+						"api",
+						"orders"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Erro, pedido com mais de 10 pizzas",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "79002498-b5bc-47f7-90b8-0f8d4d7e94a3",
+						"exec": [
+							"pm.test(\"Status is 400\", function () {\r",
+							"    pm.response.to.have.status(400);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Body com regra violada\",() => {\r",
+							"  pm.expect(pm.response.text()).to.include(\"O pedido deve ter no mínimo uma pizza e no máximo 10\");\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"protocolProfileBehavior": {
+				"disabledSystemHeaders": {
+					"accept": true
+				}
+			},
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Accept",
+						"type": "text",
+						"value": "application/json"
+					},
+					{
+						"key": "Content-Type",
+						"type": "text",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"items\": [\r\n        {\r\n            \"flavor\": 4         \r\n        },\r\n        {\r\n            \"flavor\": 4            \r\n        },\r\n        {\r\n            \"flavor\": 4            \r\n        },\r\n        {\r\n            \"flavor\": 4            \r\n        }        ,\r\n        {\r\n            \"flavor\": 4            \r\n        },\r\n        {\r\n            \"flavor\": 4            \r\n        },\r\n        {\r\n            \"flavor\": 4            \r\n        },\r\n        {\r\n            \"flavor\": 4            \r\n        },\r\n        {\r\n            \"flavor\": 4            \r\n        },\r\n        {\r\n            \"flavor\": 4            \r\n        },\r\n        {\r\n            \"flavor\": 4            \r\n        }\r\n    ]        \r\n}"
+				},
+				"url": {
+					"raw": "http://localhost:61929/api/orders",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "61929",
+					"path": [
+						"api",
+						"orders"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"protocolProfileBehavior": {}
+}

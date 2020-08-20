@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.30320.27
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Logstore_FrontEnd", "Logstore_FrontEnd\Logstore_FrontEnd.csproj", "{6420191E-7477-4948-8C5A-7F780720DC08}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Logstore_BackEnd", "Logstore_BackEnd\Logstore_BackEnd.csproj", "{B8F07D81-37FB-40A7-A3C9-29D9652EE339}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{6420191E-7477-4948-8C5A-7F780720DC08}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6420191E-7477-4948-8C5A-7F780720DC08}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6420191E-7477-4948-8C5A-7F780720DC08}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6420191E-7477-4948-8C5A-7F780720DC08}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B8F07D81-37FB-40A7-A3C9-29D9652EE339}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B8F07D81-37FB-40A7-A3C9-29D9652EE339}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B8F07D81-37FB-40A7-A3C9-29D9652EE339}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B8F07D81-37FB-40A7-A3C9-29D9652EE339}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {5C82EC23-F99D-4765-A3A3-EA4A0B7F9785}
+	EndGlobalSection
+EndGlobal
